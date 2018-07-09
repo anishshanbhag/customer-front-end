@@ -1,0 +1,67 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<html>
+<head>
+  <title>Video Walls</title>
+  <link rel="shortcut icon" type="image/png" href="home/Perpule.png" />
+</head>
+<body>
+  <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+    <a class="navbar-brand" href="/">Video Walls</a>
+    <span class="navbar-text">
+      Powered By Perpule
+    </span>
+  </nav>
+  <div class="card">
+    <form (click)="openVerticallyCentered(content1)">
+      <div class="card-header text-center">
+        <h2>Product Details</h2>
+      </div>
+      <div class="card-body">
+          <div class="form-group">
+            <p> Name: {{name}}</p>
+          </div>
+          <div class="form-group">
+            <p>Category: {{category}}</p>
+          </div>
+          <div class="form-group">
+            <p>Details: {{details}}</p>
+          </div>
+          <div class="form-group">
+            <button type="submit">Connect to salesman</button>
+          </div>
+    </div>
+  </form>
+  </div>
+
+    <ng-template #content1 let-c="close" let-d="dismiss" id="content1">
+       <div class="modal-header">
+           <h4 class="modal-title">Enter details</h4>
+           <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+           <span aria-hidden="true">&times;</span>
+           </button>
+       </div>
+       <div class="modal-body">
+           <p>Name :  <input type="text" placeholder="Enter name" #name /> </p>
+           <p>Number : <input type="text" placeholder="Enter number" #number /></p>
+        </div>
+       <div class="modal-footer">
+         <button type="button" class="btn" (click)="connectAgain()" (click)="d('Cross click')">Skip</button>
+         <button type="button" class="btn btn-danger" (click)="connectToSalesman(name.value,number.value)" (click)="d('Cross click')">Connect</button>
+       </div>
+   </ng-template>
+   <div *ngIf="alertDropDown">
+     <div class="alert alert-success">
+       <strong><pre>Connected to salesman                                                Typically connects in {{timer1}} seconds </pre></strong>
+     </div>
+   </div>
+   <div *ngIf="requestRoomDropDown">
+     <div class="alert alert-success">
+       <strong><pre>Connected to salesman                                                Typically connects in {{averageWaitingTime}} seconds </pre></strong>
+       <button (click)="removeRoom1()" class="remove">Disconnect</button>
+     </div>
+   </div>
+  <div *ngIf="disconnectDropDown">
+      <button (click)="removeRoom()" class="remove">Cancel Request</button>
+  </div>
+</body>
+</html>

@@ -1,0 +1,16 @@
+.card{
+  width:25%;
+  margin:auto;
+  position: absolute;
+  top:25%;
+  left:37%;
+}
+p{
+  font-size: 25px;
+  font-family:Serif;
+}
+.remove{
+  position: absolute;
+  left:85%;
+  top:12%;
+}
