@@ -1,0 +1,85 @@
+ <html lang="en">
+  <head>
+    Required meta tags
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Video Walls</title>
+  </head>
+  <body>
+      <div class="wrap">
+              <div class="search">
+                <form [formGroup]='stateForm'>
+                    <input type="text" class="form-control" id='search' placeholder="Search for product" formControlName='search' size="20" (keyup)="onKey($event)" (click)='openDropDown()' autocomplete="off">
+                    <!-- <img src="http://ilifehacking.cz/wp-content/uploads/2016/12/lupa_318-50440.jpg" class="searchButton"> -->
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoDCNLIeGWGYa-fzTBSm6AcJssbh0f72Ao5g7R28AwUz6b6dF0" class="searchButton"/>
+                    <i class="fa fa-search"></i>
+                </form>
+            </div>
+      </div>
+
+    <div clickOutside (clickOutside)="closeDropDown()">
+      <div *ngIf='showDropDown' class='search-drop-down'>
+        <div class="list-group">
+          <a class="list-group-item list-group-item-action"  (click)="selectValue(s)" *ngFor="let s of states | searchFilter: getSearchValue()">{{s}}</a>
+        </div>
+      </div>
+    </div>
+
+     <!-- <ng-template #content let-c="close" let-d="dismiss">
+       <div *ngIf="hideModal">
+        <div class="modal-header" >
+            <h4 class="modal-title">Product Description</h4>
+            <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Product Name: {{pdt?.name}}</li>
+              <li class="list-group-item">Product Details: {{pdt?.details}}</li>
+              <li class="list-group-item">Product Category: {{pdt?.category}}</li>
+            </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="content" (click)="connectionPage()" (click)="close()">Connect to Salesman</button>
+        </div>
+      </div>
+    </ng-template> -->
+    <!-- <ng-template #content1 let-c="close" let-d="dismiss" id="content1">
+       <div class="modal-header">
+           <h4 class="modal-title">Enter details</h4>
+           <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+           <span aria-hidden="true">&times;</span>
+           </button>
+       </div>
+       <div class="modal-body">
+           <p>Name :  <input type="text" placeholder="Enter name" #name /> </p>
+           <p>Number : <input type="text" placeholder="Enter number" #number /></p>
+        </div>
+       <div class="modal-footer">
+         <button type="button" class="btn" (click)="connectAgain()">Skip</button>
+         <button type="button" class="btn btn-danger" (click)="connectToSalesman(name.value,number.value)" (click)="connectAgain()">Connect</button>
+       </div>
+   </ng-template> -->
+   <div *ngIf="alertDropDown">
+     <div class="alert alert-success">
+       <strong><pre>Connected to salesman                                                Typically connects in {{averageWaitingTime}} seconds </pre></strong>
+       <button (click)="removeRoom()" class="remove">Cancel Request</button>
+      </div>
+   </div>
+    <!-- <div *ngIf="alertDropDown">
+        <ngb-alert [dismissible]="false">
+          <strong>Wait for 2 seconds ...</strong>
+        </ngb-alert>
+    </div> -->
+
+     <!-- <button class="btn btn-outline-primary mb-2 mr-2" (click)="openVerticallyCentered(content)">Modal vertically centered</button> -->
+      <!-- <div id="cover">
+          <div *ngFor = "let video of videos;let i=index">
+            <div *ngIf="video.check">
+              <iframe muted="muted" allow=autoplay id="myVideo" allowfullscreen [src]="sanitizer.bypassSecurityTrustResourceUrl(video.video)" frameborder="0" allowfullscreen ></iframe>
+            </div>
+          </div>
+      </div> -->
+  </body>
+ </html>
