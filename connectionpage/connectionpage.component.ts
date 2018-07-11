@@ -37,8 +37,9 @@ export class ConnectionpageComponent implements OnInit {
 	alertDropDown = false;
   averageWaitingTime = "";
   checkPreviousRoom = false;
-  customerData = "";
+  customerData:boolean;
   id4="";
+  stateCheck:boolean;
   public id: number;
 	public name: String;
 	public details: String;
@@ -61,8 +62,8 @@ export class ConnectionpageComponent implements OnInit {
         })
 
   }
-  requestRoomCheck(){
-    this.unsubscribeMe();
+   requestRoomCheck(){
+     this.unsubscribeMe();
     const httpOptions = {
     headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -70,25 +71,49 @@ export class ConnectionpageComponent implements OnInit {
     };
     this.httpClient.post('http://10.0.0.255:9000/api/v1/room/ifRequestedRoomAlreadyThereForThisDevice',{'deviceId' : result1} , httpOptions)
      .subscribe((data: any) => {
-       // console.log(data);
+       console.log(data);
        this.id4 = JSON.parse(data.data).id;
        if(this.id4!=undefined){
          this.averageWaitingTime = JSON.parse(data.data).requestedTime;
          this.requestRoomDropDown = true;
          this.checkPreviousRoom = false;
+         this.alertDropDown = false;
+         this.disconnectDropDown = false;
+         console.log("Success");
+         this.subscription = Observable.interval(this.timer1*1000/4)
+           .subscribe(() => {
+             this.httpClient.post('http://10.0.0.255:9000/api/v1/room/isSalesmanAllotted', {'id':id1}, httpOptions)
+               .subscribe((data: any) => {
+                 // let id = JSON.parse(data.data).id;
+                 // if(id != undefined){
+                 //   this.unsubscribeMe();
+                 // }
+                 if(data.response == 108203){
+                     window.open('https://joeydash.herokuapp.com/'+id1,"_top");
+                 }
+
+                 // console.log(data);
+               });
+             });
        }
        else{
+         console.log("Fail");
          this.checkPreviousRoom = true;
+
        }
      });
   }
   ngOnInit() {
   }
   openVerticallyCentered(content) {
-    this.requestRoomCheck();
-    if(this.checkPreviousRoom == true ){
-      this.modalService.open(content, { centered: true });
-    }
+     this.requestRoomCheck();
+     this.subscription = Observable.interval(1000)
+       .subscribe(() => {
+          if(this.checkPreviousRoom == true ){
+            this.modalService.open(content, { centered: true });
+          }
+          this.unsubscribeMe();
+        })
   }
   alertThis(){
       this.alertDropDown = !this.alertDropDown;
@@ -97,7 +122,10 @@ export class ConnectionpageComponent implements OnInit {
       this.hideModal = false;
   }
   connectToSalesman(name,number,open1){
-    if(name == undefined || number == undefined){
+    console.log(name);
+    console.log(number);
+    if(name == "" || number == ""){
+      console.log("Sc")
         this.modalService.open(open1, { centered: true });
     }
     else{
@@ -172,7 +200,7 @@ export class ConnectionpageComponent implements OnInit {
         // console.log(data);
       })
       this.alertDropDown = false;
-      this.requestRoomDropDown = false;
+      // this.requestRoomDropDown = false;
       this.disconnectDropDown = false;
       this.checkPreviousRoom = true;
   }
@@ -187,10 +215,10 @@ export class ConnectionpageComponent implements OnInit {
       .subscribe((data: any) => {
         // console.log(data);
       })
-      this.alertDropDown = false;
+      // this.alertDropDown = false;
       this.requestRoomDropDown=false;
       this.checkPreviousRoom = true;
-      this.disconnectDropDown = false;
+      // this.disconnectDropDown = false;
   }
 
 }

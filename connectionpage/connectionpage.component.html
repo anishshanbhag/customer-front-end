@@ -35,7 +35,10 @@
 
     <ng-template #open1 let-c="close" let-d="dismiss" id="content1">
         <div class="modal-header">
-          <h1>Please enter name and number</h1>
+          <h3>Please enter name and number</h3>
+          <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
         </div>
     </ng-template>
     <ng-template #content1 let-c="close" let-d="dismiss" id="content1">
@@ -61,7 +64,7 @@
    </div>
    <div *ngIf="requestRoomDropDown">
      <div class="alert alert-success">
-       <strong><pre>Connected to salesman                                                Typically connects in {{averageWaitingTime}} seconds </pre></strong>
+       <strong><pre>Please disconnect previous call</pre></strong>
        <button (click)="removeRoom1()" class="remove">Disconnect</button>
      </div>
    </div>
