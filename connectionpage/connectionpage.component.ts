@@ -75,6 +75,7 @@ export class ConnectionpageComponent implements OnInit {
        if(this.id4!=undefined){
          this.averageWaitingTime = JSON.parse(data.data).requestedTime;
          this.requestRoomDropDown = true;
+         this.checkPreviousRoom = false;
        }
        else{
          this.checkPreviousRoom = true;
@@ -95,23 +96,27 @@ export class ConnectionpageComponent implements OnInit {
   close(){
       this.hideModal = false;
   }
-  connectToSalesman(name,number){
-    this.disconnectDropDown = true;
-    this.httpClient.post('http://10.0.0.255:9000/api/v1/consumer/createConsumer', {
-      "name": name,
-      "phoneNumber": number,
-      "deviceId" : result1
-    })
-    .subscribe((data: any) => {
-          this.customerData = JSON.parse(data.data).id;
-      });
-      this.connectAgain();
+  connectToSalesman(name,number,open1){
+    if(name == undefined || number == undefined){
+        this.modalService.open(open1, { centered: true });
+    }
+    else{
+      // this.disconnectDropDown = true;
+      this.httpClient.post('http://10.0.0.255:9000/api/v1/consumer/createConsumer', {
+        "name": name,
+        "phoneNumber": number,
+        "deviceId" : result1
+      })
+      .subscribe((data: any) => {
+            this.customerData = JSON.parse(data.data).id;
+        });
+        this.connectAgain();
+    }
   }
   unsubscribeMe(){
       this.subscription.unsubscribe();
     }
   connectAgain(){
-    this.disconnectDropDown = true;
       this.httpClient.post('http://10.0.0.255:9000/api/v1/room/createRoom', {
         "deviceId" : result1,
         "consumerId" : this.customerData
@@ -119,6 +124,7 @@ export class ConnectionpageComponent implements OnInit {
       .subscribe((data: any) => {
         id1 = JSON.parse(data.data).id;
         if(id1!=undefined){
+          this.disconnectDropDown = true;
           this.alertDropDown = true;
            this.timer1 = JSON.parse(data.data).averageWaitingTime;
             const httpOptions = {
@@ -168,6 +174,7 @@ export class ConnectionpageComponent implements OnInit {
       this.alertDropDown = false;
       this.requestRoomDropDown = false;
       this.disconnectDropDown = false;
+      this.checkPreviousRoom = true;
   }
 
   removeRoom1(){
@@ -180,8 +187,10 @@ export class ConnectionpageComponent implements OnInit {
       .subscribe((data: any) => {
         // console.log(data);
       })
+      this.alertDropDown = false;
       this.requestRoomDropDown=false;
       this.checkPreviousRoom = true;
+      this.disconnectDropDown = false;
   }
 
 }
