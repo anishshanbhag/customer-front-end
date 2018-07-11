@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+<!--The content below is only a placeholder and can be replaced.-->
+>>>>>>> f503fa49703689ed06242a3ea0dbe66de62eb86a
 <html>
 <head>
   <title>Video Walls</title>
@@ -32,6 +36,7 @@
   </form>
   </div>
 
+<<<<<<< HEAD
 
     <ng-template #open1 let-c="close" let-d="dismiss" id="content1">
         <div class="modal-header">
@@ -41,6 +46,8 @@
         </button>
         </div>
     </ng-template>
+=======
+>>>>>>> f503fa49703689ed06242a3ea0dbe66de62eb86a
     <ng-template #content1 let-c="close" let-d="dismiss" id="content1">
        <div class="modal-header">
            <h4 class="modal-title">Enter details</h4>
@@ -54,7 +61,11 @@
         </div>
        <div class="modal-footer">
          <button type="button" class="btn" (click)="connectAgain()" (click)="d('Cross click')">Skip</button>
+<<<<<<< HEAD
          <button type="button" class="btn btn-danger" (click)="connectToSalesman(name.value,number.value,open1)" (click)="d('Cross click')">Connect</button>
+=======
+         <button type="button" class="btn btn-danger" (click)="connectToSalesman(name.value,number.value)" (click)="d('Cross click')">Connect</button>
+>>>>>>> f503fa49703689ed06242a3ea0dbe66de62eb86a
        </div>
    </ng-template>
    <div *ngIf="alertDropDown">
@@ -64,7 +75,11 @@
    </div>
    <div *ngIf="requestRoomDropDown">
      <div class="alert alert-success">
+<<<<<<< HEAD
        <strong><pre>Please disconnect previous call</pre></strong>
+=======
+       <strong><pre>Connected to salesman                                                Typically connects in {{averageWaitingTime}} seconds </pre></strong>
+>>>>>>> f503fa49703689ed06242a3ea0dbe66de62eb86a
        <button (click)="removeRoom1()" class="remove">Disconnect</button>
      </div>
    </div>

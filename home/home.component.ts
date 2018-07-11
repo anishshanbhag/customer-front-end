@@ -40,7 +40,11 @@ export class HomeComponent implements OnInit {
   states = [];
   productList = [];
 	hideModal = true;
+<<<<<<< HEAD
 	name = "Anish";
+=======
+	name = "ANish";
+>>>>>>> f503fa49703689ed06242a3ea0dbe66de62eb86a
   showDropDown = false;
 	timer1 = 0;
 	alertDropDown = false;
@@ -84,7 +88,11 @@ export class HomeComponent implements OnInit {
 				if(this.id4!=undefined){
 		 			this.averageWaitingTime = JSON.parse(data.data).requestedTime;
 		 			this.alertDropDown = true;
+<<<<<<< HEAD
 					this.subscription = Observable.interval(3000)
+=======
+					this.subscription = Observable.interval(5000)
+>>>>>>> f503fa49703689ed06242a3ea0dbe66de62eb86a
             .subscribe(() => {
               this.httpClient.post('http://10.0.0.255:9000/api/v1/room/isSalesmanAllotted', {'id':this.id4}, httpOptions)
                 .subscribe((data: any) => {
@@ -207,7 +215,11 @@ export class HomeComponent implements OnInit {
         					'Content-Type': 'application/json',
       					})
     					};
+<<<<<<< HEAD
 							this.subscription = Observable.interval(3000)
+=======
+							this.subscription = Observable.interval(50000)
+>>>>>>> f503fa49703689ed06242a3ea0dbe66de62eb86a
 								.subscribe(() => {
                   this.httpClient.post('http://10.0.0.255:9000/api/v1/room/isSalesmanAllotted', {'id':id}, httpOptions)
                     .subscribe((data: any) => {
