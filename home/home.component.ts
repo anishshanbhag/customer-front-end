@@ -17,6 +17,8 @@ interface product {
 	name: String;
 	details: String;
 	category: String;
+	sellingPrice : number;
+	mrpPrice : number;
 }
 
 var pdt: product;
@@ -40,11 +42,7 @@ export class HomeComponent implements OnInit {
   states = [];
   productList = [];
 	hideModal = true;
-<<<<<<< HEAD
-	name = "Anish";
-=======
 	name = "ANish";
->>>>>>> f503fa49703689ed06242a3ea0dbe66de62eb86a
   showDropDown = false;
 	timer1 = 0;
 	alertDropDown = false;
@@ -81,20 +79,16 @@ export class HomeComponent implements OnInit {
 				 'Content-Type': 'application/json',
 			 })
 		 };
-		 this.httpClient.post('http://10.0.0.255:9000/api/v1/room/ifRequestedRoomAlreadyThereForThisDevice',{'deviceId' : result1} , httpOptions)
+		 this.httpClient.post('http://104.155.137.69:9000/api/v1/room/ifRequestedRoomAlreadyThereForThisDevice',{'deviceId' : result1} , httpOptions)
 		 	.subscribe((data: any) => {
 				console.log(data);
 				this.id4 = JSON.parse(data.data).id;
 				if(this.id4!=undefined){
 		 			this.averageWaitingTime = JSON.parse(data.data).requestedTime;
 		 			this.alertDropDown = true;
-<<<<<<< HEAD
 					this.subscription = Observable.interval(3000)
-=======
-					this.subscription = Observable.interval(5000)
->>>>>>> f503fa49703689ed06242a3ea0dbe66de62eb86a
             .subscribe(() => {
-              this.httpClient.post('http://10.0.0.255:9000/api/v1/room/isSalesmanAllotted', {'id':this.id4}, httpOptions)
+              this.httpClient.post('http://104.155.137.69:9000/api/v1/room/isSalesmanAllotted', {'id':this.id4}, httpOptions)
                 .subscribe((data: any) => {
                   if(data.response == 108203){
 										this.unsubscribeMe();
@@ -133,7 +127,9 @@ export class HomeComponent implements OnInit {
 		  					id: this.productList[i].id,
 		  					name: this.productList[i].productName,
 		  					details: this.productList[i].productDetails,
-		  					category: this.productList[i].productCategory
+		  					category: this.productList[i].productCategory,
+								sellingPrice : this.productList[i].productSellingPrice,
+								mrpPrice : this.productList[i].productMRP
 		  				};
 		  			}
 		  		}
@@ -165,7 +161,7 @@ export class HomeComponent implements OnInit {
 						})
 					};
 					if (this.values.length >= 1) {
-						this.httpClient.get('http://10.0.0.255:9000/api/v1/product/searchProduct?query='+this.values,httpOptions)
+						this.httpClient.get('http://104.155.137.69:9000/api/v1/product/searchProduct?query='+this.values,httpOptions)
 						 	.subscribe((data: any) => {
 			          console.log(data);
 						 		this.states = [];
@@ -196,7 +192,7 @@ export class HomeComponent implements OnInit {
     				message : 'No cusomters as of now'
   			};
 				connectToSalesman(name,number){
-					this.httpClient.post('http://10.0.0.255:9000/api/v1/consumer/createConsumer', {
+					this.httpClient.post('http://104.155.137.69:9000/api/v1/consumer/createConsumer', {
 						"name": name,
 						"phoneNumber": number,
 						"deviceId" : result1
@@ -215,13 +211,10 @@ export class HomeComponent implements OnInit {
         					'Content-Type': 'application/json',
       					})
     					};
-<<<<<<< HEAD
 							this.subscription = Observable.interval(3000)
-=======
-							this.subscription = Observable.interval(50000)
->>>>>>> f503fa49703689ed06242a3ea0dbe66de62eb86a
+
 								.subscribe(() => {
-                  this.httpClient.post('http://10.0.0.255:9000/api/v1/room/isSalesmanAllotted', {'id':id}, httpOptions)
+                  this.httpClient.post('http://104.155.137.69:9000/api/v1/room/isSalesmanAllotted', {'id':id}, httpOptions)
                     .subscribe((data: any) => {
                       let id = JSON.parse(data.data).id;
                       if(id != undefined){
@@ -259,7 +252,7 @@ export class HomeComponent implements OnInit {
 				}
 
 				connectAgain(){
-					this.httpClient.post('http://10.0.0.255:9000/api/v1/room/createRoom', {
+					this.httpClient.post('http://104.155.137.69:9000/api/v1/room/createRoom', {
 						"deviceId" : result1
 					})
 					.subscribe((data: any) => {
@@ -281,7 +274,7 @@ export class HomeComponent implements OnInit {
 	    					};
 								this.subscription = Observable.interval(this.timer1*1000/4)
 									.subscribe(() => {
-	                  this.httpClient.post('http://10.0.0.255:9000/api/v1/room/isSalesmanAllotted', {'id':id}, httpOptions)
+	                  this.httpClient.post('http://104.155.137.69:9000/api/v1/room/isSalesmanAllotted', {'id':id}, httpOptions)
 	                    .subscribe((data: any) => {
 	                      // let id = JSON.parse(data.data).id;
 	                      // if(id != undefined){
@@ -329,7 +322,9 @@ export class HomeComponent implements OnInit {
 							"id": this.pdt.id,
 							"name": this.pdt.name,
 							"details": this.pdt.details,
-							"category":this.pdt.category
+							"category":this.pdt.category,
+							"sellingPrice":this.pdt.sellingPrice,
+							"mrpPrice":this.pdt.mrpPrice
             }
         };
 				this.router.navigate(['connection'],navigationExtras);
@@ -340,7 +335,7 @@ export class HomeComponent implements OnInit {
 		        'Content-Type': 'application/json',
 		      })
 		    };
-		    this.httpClient.post('http://10.0.0.255:9000/api/v1/room/deleteRoom', {'id':this.id4}, httpOptions)
+		    this.httpClient.post('http://104.155.137.69:9000/api/v1/room/deleteRoom', {'id':this.id4}, httpOptions)
 		      .subscribe((data: any) => {
 		        console.log(data);
 		      })

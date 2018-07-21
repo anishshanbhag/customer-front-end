@@ -1,44 +1,44 @@
-<<<<<<< HEAD
-=======
-<!--The content below is only a placeholder and can be replaced.-->
->>>>>>> f503fa49703689ed06242a3ea0dbe66de62eb86a
 <html>
 <head>
   <title>Video Walls</title>
-  <link rel="shortcut icon" type="image/png" href="home/Perpule.png" />
 </head>
 <body>
-  <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
-    <a class="navbar-brand" href="/">Video Walls</a>
-    <span class="navbar-text">
-      Powered By Perpule
+  <nav class="myNav">
+    <span class="myNavText">
+      {{category}}
     </span>
-  </nav>
-  <div class="card">
-    <form (click)="openVerticallyCentered(content1)">
-      <div class="card-header text-center">
-        <h2>Product Details</h2>
-      </div>
-      <div class="card-body">
-          <div class="form-group">
-            <p> Name: {{name}}</p>
-          </div>
-          <div class="form-group">
-            <p>Category: {{category}}</p>
-          </div>
-          <div class="form-group">
-            <p>Details: {{details}}</p>
-          </div>
-          <div class="form-group">
-            <button type="submit">Connect to salesman</button>
-          </div>
+    <div class="outer6">
+      <img src="../../assets/images/VW-18.png" class="myArrow" (click)="goTo()">
     </div>
-  </form>
+  </nav>
+  <div class="outer1">
+    <div class="card">
+      <div class="card-body">
+        <p>{{name}}</p>
+        <div class="outer5">
+          <div class="inner5">
+            <hr>
+          </div>
+        </div>
+        <pre class="mySellingPrice">&#8377;{{mrpPrice}}  &#8377;{{sellingPrice}} </pre>
+        <h5 class="technical">TECHNICAL DETAILS</h5>
+        <p class="productDetails">{{details}}</p>
+      </div>
+    </div>
   </div>
-
-<<<<<<< HEAD
-
-    <ng-template #open1 let-c="close" let-d="dismiss" id="content1">
+  <div class="outer3">
+    <div class="inner3">
+      <button type="submit" class="submitButton" (click)="openVerticallyCentered(content1)">CONNECT TO OUR EXPERT</button>
+    </div>
+  </div>
+  <div class="outer2">
+    <div class="backgroundOrange">
+    </div>
+  </div>
+  <div class="outer6">
+    <img src="../../assets/images/VW-15.png" class="myCall">
+  </div>
+     <ng-template #open1 let-c="close" let-d="dismiss" id="content1">
         <div class="modal-header">
           <h3>Please enter name and number</h3>
           <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
@@ -46,8 +46,6 @@
         </button>
         </div>
     </ng-template>
-=======
->>>>>>> f503fa49703689ed06242a3ea0dbe66de62eb86a
     <ng-template #content1 let-c="close" let-d="dismiss" id="content1">
        <div class="modal-header">
            <h4 class="modal-title">Enter details</h4>
@@ -61,11 +59,7 @@
         </div>
        <div class="modal-footer">
          <button type="button" class="btn" (click)="connectAgain()" (click)="d('Cross click')">Skip</button>
-<<<<<<< HEAD
          <button type="button" class="btn btn-danger" (click)="connectToSalesman(name.value,number.value,open1)" (click)="d('Cross click')">Connect</button>
-=======
-         <button type="button" class="btn btn-danger" (click)="connectToSalesman(name.value,number.value)" (click)="d('Cross click')">Connect</button>
->>>>>>> f503fa49703689ed06242a3ea0dbe66de62eb86a
        </div>
    </ng-template>
    <div *ngIf="alertDropDown">
@@ -75,16 +69,48 @@
    </div>
    <div *ngIf="requestRoomDropDown">
      <div class="alert alert-success">
-<<<<<<< HEAD
        <strong><pre>Please disconnect previous call</pre></strong>
-=======
-       <strong><pre>Connected to salesman                                                Typically connects in {{averageWaitingTime}} seconds </pre></strong>
->>>>>>> f503fa49703689ed06242a3ea0dbe66de62eb86a
        <button (click)="removeRoom1()" class="remove">Disconnect</button>
      </div>
    </div>
   <div *ngIf="disconnectDropDown">
-      <button (click)="removeRoom()" class="remove">Cancel Request</button>
+      <button (click)="removeRoom()" class="remove1">Cancel Request</button>
   </div>
+  <div class="outer">
+      <div class="inner">
+        <img src="../../assets/images/VW-11.png" >
+      </div>
+  </div>
+  <ng-template #content4 let-c="close" let-d="dismiss" id="content1">
+     <div class="modal-header">
+         <h4 class="modal-title">Thank You for your response</h4>
+     </div>
+     <div class="modal-body">
+         <p>Would you like to place another call to a expert salesman?</p>
+      </div>
+     <div class="modal-footer">
+       <button type="button" class="btn btn-success" (click)="connectAgain()" (click)="feebBackButton()" (click)="d('Cross click')">YES</button>
+       <button type="button" class="btn btn-danger" (click)="d('Cross click')" (click)="moveToHome()">NO</button>
+     </div>
+ </ng-template>
+  <ng-template #content3 let-c="close" let-d="dismiss" id="content3">
+     <div class="modal-header">
+         <h4 class="modal-title">Feedback</h4>
+     </div>
+     <div class="modal-body">
+         <p>Thank You for spending time with our expert</p>
+         <p>We hope your query was resolved?</p>
+      </div>
+     <div class="modal-footer">
+         <button type="button" class="btn btn-success" (click)="moveToFeedback()" (click)="d('Cross click')">YES</button>
+         <button type="button" class="btn btn-danger" (click)="openPlaceCall(content4)"  (click)="d('Cross click')">NO</button>
+     </div>
+ </ng-template>
+
+  <div class="nextButton" *ngIf="feedbackButton">
+    <button class="goToFeedback" (click)="goToFeedbackPage(content3)">FEEDBACK</button>
+  </div>
+    <img src="../../assets/images/VW-08.png">
+
 </body>
 </html>

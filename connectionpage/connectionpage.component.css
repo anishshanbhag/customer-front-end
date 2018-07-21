@@ -1,16 +1,163 @@
-.card{
-  width:25%;
-  margin:auto;
+html,body{
+  width:100%;
+  height: 100%;
+}
+.outer1{
   position: absolute;
-  top:25%;
-  left:37%;
+  width:100%;
+  height:100%;
+}
+.outer2{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.card{
+  width:45%;
+  position: relative;
+  left:30%;
+  top:12%;
+  border:none
 }
 p{
   font-size: 25px;
   font-family:Serif;
 }
 .remove{
-  position: absolute;
+  position: relative;
   left:85%;
-  top:12%;
+}
+.myNav{
+  background-color: #00002E;
+  color: white;
+    padding: 16px 21px 21px 53px;
+}
+.myNavText{
+  color: white;
+  font-size:30px;
+  position: relative;
+  left:2%;
+}
+.myImage{
+  position: relative;
+  left:83%;
+  top:94%;
+}
+.imageCard{
+  position: relative;
+  left:15%;
+}
+.productDetails{
+  font-size: 20px;
+}
+.submitButton{
+  position: relative;
+  top:100%;
+  color: white;
+  background-color: #00002E;
+  padding: 30px 50px 30px 80px;
+  border-radius: 8px;
+  font-size: 20px;
+  z-index:10;
+  left:5%;
+}
+.myCall{
+  position: relative;
+  top:63%;
+  left:36%;
+  background-color: #00002E;
+  z-index: 10;
+}
+.myArrow{
+  /* position: relative;
+  left:-142px;
+  top:-4px; */
+  position: relative;
+  top:-6%;
+  left:-2%;
+}
+.backgroundOrange{
+  position: relative;
+  top:63%;
+}
+.myNav1{
+  background-color:  #FF9533;
+}
+.backgroundOrange{
+  border: none;
+  width:100%;
+  height:50px;
+  background-color: #D99439;
+}
+/* hr{
+  width:55px;
+  position: relative;
+  left:3%;
+  top:19%;
+  background-color: black; */
+/* } */
+.outer{
+  position: absolute;
+  width: 100%;
+  height:100%;
+}
+.inner{
+  position: relative;
+  left:83%;
+  top:74%;
+}
+.outer3{
+  position: absolute;
+  width: 100%;
+  height:100%;
+}
+.inner3{
+  position: relative;
+  top:59%;
+  left:30%;
+}
+.outer4{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.remove1{
+  position: absolute;
+  left:76%;
+  top: 15%;
+}
+.outer5{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.inner5{
+  position: relative;
+  top:-2%;
+  background-color: black;
+  width:50px;
+}
+.technical{
+  color:#B4ACB5;
+  font :
+}
+.outer6{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.nextButton{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.goToFeedback{
+  position: relative;
+  left:85%;
+  top:-11%;
+  background-color: #00002E;
+  color: white;
+  padding: 15px 20px 15px 20px;
+  border-radius: 13px;
+  border:none;
 }

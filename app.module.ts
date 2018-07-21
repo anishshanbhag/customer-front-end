@@ -11,6 +11,7 @@ import { ClickOutsideDirective } from './shared/dropdown.directive';
 import { ApiService } from './shared';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ConnectionpageComponent } from './connectionpage/connectionpage.component';
+import { FeedbackPageComponent } from './feedback-page/feedback-page.component';
 
 
 const appRoutes : Routes = [
@@ -21,6 +22,10 @@ const appRoutes : Routes = [
   {
     path : 'connection',
     component : ConnectionpageComponent
+  },
+  {
+    path : 'feedback',
+    component : FeedbackPageComponent
   }
 ]
 
@@ -31,7 +36,8 @@ const appRoutes : Routes = [
     ClickOutsideDirective,
     SearchFilterPipe,
     LetterBoldPipe,
-    ConnectionpageComponent
+    ConnectionpageComponent,
+    FeedbackPageComponent
     ],
     imports: [
     BrowserModule,
